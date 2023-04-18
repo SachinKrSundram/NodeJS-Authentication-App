@@ -13,7 +13,7 @@ const User = require('./models/user');
 
 let PORT;
 
-if(process.env.NODE_ENV=="production"){
+if(process.env.NODE_ENV=="development"){
     PORT = process.env.PORT || 8000;
 }
 else{
