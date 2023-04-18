@@ -1,7 +1,8 @@
+const dotenv = require('dotenv').config();
+console.log(dotenv)
 const express = require('express');
 const app = express();
 const router = express.Router();
-require('dotenv').config();
 const db = require('./config/mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -10,14 +11,9 @@ const localStrategy = require('./config/passport-local');
 const GoogleStrategy = require('./config/passport-google');
 const User = require('./models/user');
 
-let PORT;
+let PORT = process.env.PORT || 8000;
 
-if(process.env.NODE_ENV=="development"){
-    PORT = process.env.PORT || 8000;
-}
-else{
-    PORT = 8000;
-}
+
 
 
 // Use the built-in middleware for parsing incoming request bodies to use req body data
