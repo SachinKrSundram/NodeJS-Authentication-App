@@ -1,5 +1,4 @@
 const dotenv = require('dotenv').config();
-console.log(dotenv)
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -11,9 +10,15 @@ const localStrategy = require('./config/passport-local');
 const GoogleStrategy = require('./config/passport-google');
 const User = require('./models/user');
 
-let PORT = process.env.PORT || 8000;
 
+let PORT;
 
+if(process.env.NODE_ENV=="production"){
+    PORT = process.env.PORT || 8000;
+}
+else{
+    PORT = 8000;
+}
 
 
 // Use the built-in middleware for parsing incoming request bodies to use req body data
